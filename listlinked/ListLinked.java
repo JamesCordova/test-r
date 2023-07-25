@@ -65,6 +65,10 @@ public class ListLinked<E> {
 			}
 		}
 	}
+
+	public Node<E> getHead() {
+        	return this.head;
+    	}
 	
 	// ToString
 	public String toString() {
