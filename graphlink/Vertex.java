@@ -1,13 +1,28 @@
 package graphlink;
 
+import listlinked.ListLinked;
+
 public class Vertex<E> {
 
-    private E data;
-    private LinkedList<Edge<E>> edges;
+    protected E data;
+    protected ListLinked<Edge<E>> listAdj;
 
     public Vertex(E data) {
         this.data = data;
-        this.edges = new LinkedList<>();
+        this.listAdj = new ListLinked<Edge<E>>();
+    }
+
+    public boolean equals(Object o) {
+        if (o instanceof Vertex<?>) {
+            Vertex<E> v = (Vertex<E>) o;
+            return this.data.equals(v.data);
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return this.data + " -->\t " + this.listAdj.toString() + "\n";
     }
 
     public E getData() {
@@ -17,17 +32,4 @@ public class Vertex<E> {
     public void setData(E data) {
         this.data = data;
     }
-
-    public LinkedList<Edge<E>> getEdges() {
-        return edges;
-    }
-
-    public void setEdges(LinkedList<Edge<E>> edges) {
-        this.edges = edges;
-    }
-
-    public String toString() {
-        return data.toString();
-    }
-
 }
