@@ -2,42 +2,31 @@ package graphlink;
 
 public class Edge<E> {
 
-    private Vertex<E> source;
-    private Vertex<E> destination;
-    private int weight;
+    protected Vertex<E> refdest;
+    protected int weight;
 
-    public Edge(Vertex<E> source, Vertex<E> destination, int weight) {
-        this.source = source;
-        this.destination = destination;
+    public Edge(Vertex<E> refdest, int weight) {
+        this.refdest = refdest;
         this.weight = weight;
     }
 
-    public Vertex<E> getSource() {
-        return source;
+    public Edge(Vertex<E> refdest) {
+        this(refdest, -1);
     }
 
-    public void setSource(Vertex<E> source) {
-        this.source = source;
+    public boolean equals(Object o) {
+        if (o instanceof Edge<?>) {
+            Edge<E> e = (Edge<E>) o;
+            return this.refdest.equals(e.refdest);
+        }
+        return false;
     }
 
-    public Vertex<E> getDestination() {
-        return destination;
-    }
-
-    public void setDestination(Vertex<E> destination) {
-        this.destination = destination;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
+    @Override
     public String toString() {
-        return "(" + source.getData() + "->" + destination.getData() + ", weight: " + weight + ")";
+        if (this.weight > -1) {
+            return this.refdest.data.toString() + "[" + this.weight + "]";
+        }
+        return this.refdest.data.toString();
     }
-
 }
