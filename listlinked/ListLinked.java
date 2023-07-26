@@ -76,10 +76,12 @@ public class ListLinked<E> {
         	return this.head;
     	}
 
-    public void setHead(Node<E> head) {
+   	public void setHead(Node<E> head) {
         	this.head = head;
     	}
-	
+	public int getSize() {
+		return this.size;
+	}
 	// ToString
 	public String toString() {
 		String str = "";
