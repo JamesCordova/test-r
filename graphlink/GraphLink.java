@@ -102,6 +102,9 @@ public class GraphLink<E> {
         // No se encontró el vértice con el dato deseado
         return false;
     }
+    public ListLinked<Vertex<E>> getListVertex() {
+		return listVertex;
+	}
 
     @Override
     public String toString() {
