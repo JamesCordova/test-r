@@ -1,4 +1,4 @@
-package Estructuras;
+package estructuras;
 public class PriorityQueueHeap<T extends Comparable<T>> {
 
     private Heap<NodeHeap<T>> heap;
