@@ -1,6 +1,6 @@
-package miParte;
+package clases;
 
-public class Producto {
+public class Producto implements Comparable<Producto>{
 	private int code;
 	private String descripcion;
 	private int stock;
@@ -30,5 +30,12 @@ public class Producto {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
-	
+	@Override
+	public int compareTo(Producto o) {
+		// TODO Auto-generated method stub
+		return this.code-o.getCode();
+	}
+	public String toString (){
+		return this.descripcion;
+	}
 }
