@@ -2,10 +2,12 @@ package listlinked;
 
 public class ListLinked<E> {
 	public Node<E> head;
+	private int size;
 	
 	// Constructors
 	public ListLinked() {
 		this.head = null;
+		this.size = 0;
 	}
 	
 	// Methods
@@ -35,6 +37,7 @@ public class ListLinked<E> {
 	
 	public void insertFirst(E x) {
 		this.head = new Node<E>(x, this.head);
+		this.size++;
 	}
 	
 	public void insertLast(E x) {
@@ -45,8 +48,9 @@ public class ListLinked<E> {
 			Node <E> aux = this.head;
 			while (aux != null && aux.getNext() != null)
 				aux = aux.getNext(); 
-			if (aux != null) {
-				aux.setNext(new Node<E> (x)); 
+			if (aux != null) {// no es if(aux.getNext == null) ?
+				aux.setNext(new Node<E> (x));
+				this.size++;
 			}
 		}
 	}
@@ -54,14 +58,16 @@ public class ListLinked<E> {
 	public void remove(E x) {
 		if (this.head != null && this.head.getData().equals(x)) { 
 			this.head = this.head.getNext();
+			this.size--;
 		}
 		else {
 			Node<E> aux = this.head;
 			while (aux.getNext() != null && !aux.getNext().getData().equals(x)) {
 				aux = aux.getNext();
 			}
-			if (aux.getNext()!= null) {
+			if (aux.getNext()!= null) {// duda
 				aux.setNext(aux.getNext().getNext());
+				this.size++;
 			}
 		}
 	}
