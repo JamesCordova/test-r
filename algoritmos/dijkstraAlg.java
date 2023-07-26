@@ -1,4 +1,4 @@
-package Algoritmos;
+package algoritmos;
 
 import Estructuras.GraphLink;
 import Estructuras.Par;
