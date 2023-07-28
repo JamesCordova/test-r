@@ -173,7 +173,11 @@ public class Avl<E extends Comparable<E>> {
 			else {
 				if (current.getLeft()!= null && current.getRight() != null) {
 					//case 3: dos hijos
-					
+					 NodeAvl<E> successor = findMin(current.getRight());
+              				// Copiamos los datos del sucesor en el nodo actual.
+                			current.setData(successor.getData());
+                			// Luego, eliminamos el sucesor recursivamente desde el subárbol derecho.
+                			res.setRight(remove(successor.getData(), current.getRight()));
 				}
 				else {
 					if (isLeaf(current)) 	//case 1: hoja
@@ -185,6 +189,13 @@ public class Avl<E extends Comparable<E>> {
 			}
 		}
 		return res;	
+	}
+
+	// Método auxiliar para encontrar el nodo con el valor mínimo en un subárbol.
+	private NodeAvl<E> findMin(NodeAvl<E> node) {
+  		if (node.getLeft() == null)
+      	 		return node;
+   	 	return findMin(node.getLeft());
 	}
 	
 	private boolean isLeaf(NodeAvl<E> current) {
