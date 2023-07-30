@@ -1,4 +1,4 @@
-package Estructuras;
+package clases;
 
 public class Par<VerticeID, distancia> {
 	private VerticeID ID;

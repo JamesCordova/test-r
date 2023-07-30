@@ -27,7 +27,7 @@ public class Test {
 		nuevo.getAlmacen().insert(producto3);
 		nuevo.getAlmacen().inOrden();
 		System.out.println("root: " + nuevo.getAlmacen().getRoot());
-		nuevo.getAlmacen().remove(producto3);
+		nuevo.getAlmacen().remove(producto2);
 		nuevo.getAlmacen().inOrden();
 		System.out.println("root: " + nuevo.getAlmacen().getRoot());
 		nuevo.getAlmacen().insert(producto3);

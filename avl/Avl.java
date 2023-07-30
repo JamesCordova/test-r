@@ -173,11 +173,14 @@ public class Avl<E extends Comparable<E>> {
 			else {
 				if (current.getLeft()!= null && current.getRight() != null) {
 					//case 3: dos hijos
-					 NodeAvl<E> successor = findMin(current.getRight());
-              				// Copiamos los datos del sucesor en el nodo actual.
-                			current.setData(successor.getData());
-                			// Luego, eliminamos el sucesor recursivamente desde el subárbol derecho.
-                			res.setRight(remove(successor.getData(), current.getRight()));
+                		// Encontramos el sucesor inmediato (menor valor en el subárbol derecho)
+               			NodeAvl<E> sucesor = getMin(current.getRight());
+                		// Reemplazamos el valor del nodo actual con el valor del sucesor
+               			current.setData(sucesor.getData());
+						// Eliminamos el sucesor del subárbol derecho
+                		res.setRight(remove(sucesor.getData(), current.getRight()));
+						//Actualizamos el BF del root
+						current.setBf(current.getRight().getBf()-current.getLeft().getBf());
 				}
 				else {
 					if (isLeaf(current)) 	//case 1: hoja
@@ -191,13 +194,6 @@ public class Avl<E extends Comparable<E>> {
 		return res;	
 	}
 
-	// Método auxiliar para encontrar el nodo con el valor mínimo en un subárbol.
-	private NodeAvl<E> findMin(NodeAvl<E> node) {
-  		if (node.getLeft() == null)
-      	 		return node;
-   	 	return findMin(node.getLeft());
-	}
-	
 	private boolean isLeaf(NodeAvl<E> current) {
 		return current.getLeft() == null && current.getRight() == null;
 	}
@@ -207,14 +203,15 @@ public class Avl<E extends Comparable<E>> {
 		if (isEmpty())
 			System.out.println("Arbol esta vacio ....");
 		else{
-			getMin(this.root);
+			System.out.println(getMin(this.root).toString());
 		}
 	}
-	private void getMin(NodeAvl<E> current) {
+	private NodeAvl<E> getMin(NodeAvl<E> current) {
 		if (current.getLeft() != null)
 			getMin(current.getLeft());
 		else
-			System.out.println("Minimo: " + current.getData());
+			return current;
+		return current;
 	}
 	
 	//Elemento Maximo del arbol avl
@@ -222,15 +219,16 @@ public class Avl<E extends Comparable<E>> {
 		if (isEmpty())
 			System.out.println("Arbol esta vacio ....");
 		else{
-			getMax(this.root);
+			System.out.println(getMax(this.root).toString());
 		}
 	}
 	
-	private void getMax(NodeAvl<E> current) {
+	private NodeAvl<E> getMax(NodeAvl<E> current) {
 		if (current.getRight() != null)
 			getMax(current.getRight());
 		else
-			System.out.println("Maximo: " + current.getData());
+			return current;
+		return current;
 	}
 	//Obtener el padre de un nodo
 	public E parent(E x) {
