@@ -57,7 +57,8 @@ public class AlmacenesFiles extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
-        System.out.println("" + jFileChooser1.getSelectedFile().getAbsolutePath());        // TODO add your handling code here:
+        System.out.println("" + jFileChooser1.getSelectedFile().getAbsolutePath()); 
+        dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jFileChooser1ActionPerformed
 
     /**
