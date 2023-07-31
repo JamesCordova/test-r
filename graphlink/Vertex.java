@@ -34,4 +34,7 @@ public class Vertex<E> {
     public void setData(E data) {
         this.data = data;
     }
+    public ListLinked<Edge<T>> getListAdj() {
+		return listAdj;
+	}
 }
