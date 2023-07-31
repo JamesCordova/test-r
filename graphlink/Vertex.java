@@ -2,7 +2,7 @@ package graphlink;
 
 import listlinked.ListLinked;
 
-public class Vertex<E> {
+public class Vertex<T extends Comparable<T>> implements Comparable<T> {
 
     protected E data;
     protected ListLinked<Edge<E>> listAdj;
@@ -27,14 +27,17 @@ public class Vertex<E> {
         return this.data + " -->\t " + this.listAdj.toString() + "\n";
     }
 
-    public E getData() {
-        return data;
-    }
-
-    public void setData(E data) {
-        this.data = data;
-    }
-    public ListLinked<Edge<T>> getListAdj() {
+    	public E getData() {
+        	return data;
+  	}
+	public void setData(E data) {
+	        this.data = data;
+  	}
+	public int compareTo(T data) {
+			
+		return this.data.compareTo(data);
+	}
+   	public ListLinked<Edge<T>> getListAdj() {
 		return listAdj;
 	}
 }
