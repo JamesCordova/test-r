@@ -320,7 +320,7 @@ public class Interfaz extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Código", "Descripción", "Stock"
+                "Código", "Nombre", "Dirección"
             }
         ) {
             Class[] types = new Class [] {
@@ -460,6 +460,8 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // Abrir formulario para agregar formulario
+    	ProductosForm formProductos = new ProductosForm();
+    	formProductos.setVisible(true);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -477,7 +479,9 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        // TODO add your handling code here:
+        // Abrir formulario para agregar almacenes
+        AlmacenesForm formAlmacenes = new AlmacenesForm();
+        formAlmacenes.setVisible(true);
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
@@ -489,7 +493,9 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        // TODO add your handling code here:
+        // Abrir Selector de archivos
+    	AlmacenesFiles archivoAlmacenes = new AlmacenesFiles();
+        archivoAlmacenes.setVisible(true);
     }//GEN-LAST:event_jButton18ActionPerformed
 
     /**
@@ -503,7 +509,7 @@ public class Interfaz extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
