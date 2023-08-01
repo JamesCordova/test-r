@@ -4,9 +4,19 @@ import myExceptions.ExceptionNoFound;
 public class Avl<E extends Comparable<E>> {
 	private NodeAvl<E> root;
 	private boolean height;
+	private int cont;
 	
+	public int getCont() {
+		return cont;
+	}
+
+	public void setCont(int cont) {
+		this.cont = cont;
+	}
+
 	public Avl() {
 		this.root = null;
+		this.cont=0;
 	}
 	
 	public boolean isEmpty() {
@@ -63,6 +73,7 @@ public class Avl<E extends Comparable<E>> {
 				}
 			}
 		}
+		cont++;
 		return res;	
 	}
 	
@@ -191,6 +202,7 @@ public class Avl<E extends Comparable<E>> {
 				}
 			}
 		}
+		cont--;
 		return res;	
 	}
 

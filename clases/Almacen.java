@@ -1,6 +1,7 @@
 package clases;
 
 import avl.Avl;
+import myExceptions.ExceptionNoFound;
 
 public class Almacen{
     private int codigo;
@@ -14,6 +15,17 @@ public class Almacen{
         this.direccion=direccion;
         this.almacen=new Avl<Producto>();
         
+    }
+
+    public void traspasarProductos(Almacen almacen2) throws ExceptionNoFound{
+        for(int i=0;i<this.almacen.getCont();i++){
+            int temp1=almacen.getRoot().getCode();
+            String temp2=almacen.getRoot().getDescripcion();
+            int temp3=almacen.getRoot().getStock();
+            Producto tempProducto=new Producto(temp1, temp2, temp3);
+            almacen2.getAlmacen().insert(tempProducto);
+            almacen.remove(almacen.getRoot());
+        }
     }
 
     public Avl<Producto> getAlmacen() {
