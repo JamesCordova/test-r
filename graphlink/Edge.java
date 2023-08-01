@@ -1,6 +1,6 @@
 package graphlink;
 
-public class Edge<E extends Comparable<E>> implements Comparable<Integer> {
+public class Edge<E> {
 
     protected Vertex<E> refdest;
     protected Integer weight;
@@ -22,6 +22,15 @@ public class Edge<E extends Comparable<E>> implements Comparable<Integer> {
         return false;
     }
 
+    // Métodos adicionales para acceder a refdest y weight desde fuera de la clase
+    public Vertex<E> getRefdest() {
+        return refdest;
+    }
+
+    public int getWeight() {
+        return weight;
+    }	
+
     @Override
     public String toString() {
         if (this.weight > -1) {
@@ -29,17 +38,5 @@ public class Edge<E extends Comparable<E>> implements Comparable<Integer> {
         }
         return this.refdest.data.toString();
     }
-
-	@Override
-	public int compareTo(Integer peso) {
-			return this.weight-peso;
-	}
-    public Vertex<E> getRefdest() {
-		return refdest;
-	}
-
-	public Integer getWeight() {
-		return weight;
-	}
 }
 
