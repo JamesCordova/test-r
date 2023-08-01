@@ -38,23 +38,38 @@ public class dijkstraAlg<E extends Comparable<E>> {
 //        	int aux=grafo.getListVertex().searchIndex(origen.getData());
         	CosteCamino[index] = 0;
         	this.myHeap.enqueue(origen, 0);
-        	while(!this.myHeap.isEmpty()) {
+        	int nIteraciones = 0;
+        	while(!this.myHeap.isEmpty()&& nIteraciones < grafo.getListVertex().getSize()) {
         		Vertex<E> current = this.myHeap.dequeue();
+        		know[nIteraciones] = true;
         		int currentDistance=CosteCamino[grafo.searchVertexIndex(current)];
         		
-        		for (int i = 0; i < current.getListAdj().getSize(); i++) {
-        			ListLinked<Edge<E>> misVecinos=current.getListAdj();
-					Vertex<E> vecino = misVecinos.getHead().getData().getRefdest();
-					int distP = currentDistance+misVecinos.getHead().getData().getWeight();
-					Edge<E> currentEdge = misVecinos.getHead().getData();
-					if(distP < CosteCamino[grafo.searchVertexIndex(current)]) {
-						CosteCamino[grafo.searchVertexIndex(current)]=distP;
-						myHeap.enqueue(vecino, distP);
+//        		for (Node<Edge<E>> i = current.getListAdj().getHead();i.getNext()!=null; i=i.getNext()) {
+//        			ListLinked<Edge<E>> misVecinos=current.getListAdj();
+//					Vertex<E> vecino = misVecinos.getHead().getData().getRefdest();
+//					int distP = currentDistance+misVecinos.getHead().getData().getWeight();
+//					Edge<E> currentEdge = misVecinos.getHead().getData();
+//					if(distP < CosteCamino[grafo.searchVertexIndex(current)]) {
+//						CosteCamino[grafo.searchVertexIndex(current)]=distP;
+//						myHeap.enqueue(vecino, distP);
+//					}
+//				}
+        		for (Node<Edge<E>> i = current.getListAdj().getHead();i.getNext()!=null; i=i.getNext()) {
+        			int j = 0;//se usara como indice del arreglo
+        			Vertex<E> vecino = i.getData().getRefdest();
+        			int distP = currentDistance + i.getData().getWeight();
+        			if (distP < CosteCamino[j]) {
+						CosteCamino[j]=distP;
+//						know[j] = true;
 					}
-					
+        			myHeap.enqueue(vecino,CosteCamino[j]);
+        			
+        			j++;
 				}
+        		nIteraciones++;
         	}
         }	
 }
+
 
 
