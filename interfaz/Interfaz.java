@@ -4,6 +4,10 @@
  */
 package interfaz;
 
+import javax.swing.JFileChooser;
+
+import clases.DistributionRoute;
+
 /**
  *
  * @author Space
@@ -11,7 +15,7 @@ package interfaz;
 public class Interfaz extends javax.swing.JFrame {
 
     /**
-     * Creates new form Interfaz
+     * Creates new form interfaz
      */
     public Interfaz() {
         initComponents();
@@ -418,8 +422,15 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // Abrir Selector de archivos
-        RutasFiles archivoRutas = new RutasFiles();
-        archivoRutas.setVisible(true);
+		DistributionRoute text = new DistributionRoute();	
+		JFileChooser fileChooser = new JFileChooser();
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            String filename = fileChooser.getSelectedFile().getAbsolutePath();
+            text.loadFiles(filename);
+        }
+        //RutasFiles archivoRutas = new RutasFiles();
+        //archivoRutas.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
