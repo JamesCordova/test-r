@@ -74,16 +74,19 @@ public class dijkstraAlg<E extends Comparable<E>> {
         		nIteraciones++;
         	}
         }
-	public void getRutaMin(int nVertice) {
+	public Par<Integer,Integer>[] getRutaMin(int nVertice) {
 		int viajante=nVertice;
 		int distancia = inf;
 		int nIteraciones = 0;
+		Par<Integer, Integer>[] miRutAuxiliar = new Par[grafo.getListVertex().getSize()];
+		
 		while (distancia!=0) {
 			distancia = this.misPares[viajante].getDistance();
 			viajante = this.misPares[viajante].getID();
 		}
+		Par<Integer, Integer>[] miRuta = new Par[nIteraciones];
+		
+		return null;
 	}
 }
-
-
 
