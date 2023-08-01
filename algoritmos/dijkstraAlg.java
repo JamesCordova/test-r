@@ -18,6 +18,7 @@ public class dijkstraAlg<E extends Comparable<E>> {
 	private final int inf = Integer.MAX_VALUE;
 	Par<Integer, Integer> [] misPares; 
 	private PriorityQueueHeap<Vertex<E>> myHeap;
+	private int origenIndex;
 	
 	public dijkstraAlg(Vertex<E> origen,GraphLink<E> grafo) {
 		this.grafo = grafo;
@@ -58,17 +59,30 @@ public class dijkstraAlg<E extends Comparable<E>> {
         			int j = 0;//se usara como indice del arreglo
         			Vertex<E> vecino = i.getData().getRefdest();
         			int distP = currentDistance + i.getData().getWeight();
+        			
         			if (distP < CosteCamino[j]) {
 						CosteCamino[j]=distP;
 //						know[j] = true;
 					}
-        			myHeap.enqueue(vecino,CosteCamino[j]);
+        			if (know[j]=false) {
+        				myHeap.enqueue(vecino,CosteCamino[j]);
+					}
         			
         			j++;
 				}
+        		this.misPares[nIteraciones] = new Par<Integer, Integer>(nIteraciones,currentDistance);
         		nIteraciones++;
         	}
-        }	
+        }
+	public void getRutaMin(int nVertice) {
+		int viajante=nVertice;
+		int distancia = inf;
+		int nIteraciones = 0;
+		while (distancia!=0) {
+			distancia = this.misPares[viajante].getDistance();
+			viajante = this.misPares[viajante].getID();
+		}
+	}
 }
 
 
