@@ -2,16 +2,14 @@ package graphlink;
 
 import listlinked.ListLinked;
 
-public class Vertex<T extends Comparable<T>> implements Comparable<T> {
+public class Vertex<T> {
 
     protected E data;
     protected ListLinked<Edge<E>> listAdj;
-    public int indexPosition;
 
     public Vertex(E data) {
         this.data = data;
         this.listAdj = new ListLinked<Edge<E>>();
-        this.indexPosition = -1;
     }
 
     public boolean equals(Object o) {
@@ -27,17 +25,16 @@ public class Vertex<T extends Comparable<T>> implements Comparable<T> {
         return this.data + " -->\t " + this.listAdj.toString() + "\n";
     }
 
-    	public E getData() {
-        	return data;
-  	}
-	public void setData(E data) {
-	        this.data = data;
-  	}
-	public int compareTo(T data) {
-			
-		return this.data.compareTo(data);
-	}
-   	public ListLinked<Edge<T>> getListAdj() {
-		return listAdj;
-	}
+    public E getData() {
+        return data;
+    }
+
+    /*
+    public void setData(E data) {
+        this.data = data;
+    }*/
+    @Override
+    public String toString() {
+        return this.data + " -->\t " + this.listAdj.toString() + "\n";
+    }
 }
