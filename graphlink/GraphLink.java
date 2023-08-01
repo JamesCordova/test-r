@@ -119,10 +119,22 @@ public class GraphLink<E> {
         // No se encontró el vértice con el dato deseado
         return false;
     }
-    public ListLinked<Vertex<E>> getListVertex() {
-		return listVertex;
-	}
-
+	
+    // Método adicional para acceder a los vértices desde fuera de la clase	
+    public ListLinked<Vertex<E>> getVertices() {
+        return listVertex;
+    }
+	
+    // Método adicional para acceder a las aristas de un vértice desde fuera de la clase
+    public ListLinked<Edge<E>> getEdges(Vertex<E> vertex) {
+        for (Node<Vertex<E>> current = listVertex.getHead(); current != null; current = current.getNext()) {
+            if (current.getData().equals(vertex)) {
+                return current.getData().listAdj;
+            }
+        }
+        return null;
+    }
+	
     @Override
     public String toString() {
         return this.listVertex.toString();
