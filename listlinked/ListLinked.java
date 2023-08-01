@@ -1,5 +1,7 @@
 package listlinked;
 
+import java.util.ArrayList;
+
 public class ListLinked<E> {
 	public Node<E> head;
 	private int size;
@@ -90,5 +92,14 @@ public class ListLinked<E> {
 		}
 		return str;
 	}
-    
+
+	//Iterar sobre los nodos y agregar a ArrayList 
+    public ArrayList<E> toArrayList() {
+        ArrayList<E> arrayList = new ArrayList<>();
+        for (Node<E> current = this.head; current != null; current = current.getNext()) {
+            arrayList.add(current.getData());
+        }
+        return arrayList;
+    }
+	
 }
