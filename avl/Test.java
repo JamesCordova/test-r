@@ -8,6 +8,7 @@ public class Test {
 
 	public static void main(String[] args) throws ExceptionNoFound {
 		Almacen nuevo=new Almacen(001, "almacen1", "direccion1");
+		Almacen nuevo2=new Almacen(002, "almacen2", "direccion1");
 		Producto producto1=new Producto(1);
 		producto1.setDescripcion("Audifonos nueva generaciòn");
 		producto1.setStock(100);
@@ -18,6 +19,8 @@ public class Test {
 		producto3.setDescripcion("Ropa caballeros 2023");
 		producto1.setStock(150);
 
+		
+
 		nuevo.getAlmacen().insert(producto1);
 		nuevo.getAlmacen().inOrden();
 		System.out.println("root: " + nuevo.getAlmacen().getRoot());
@@ -27,15 +30,22 @@ public class Test {
 		nuevo.getAlmacen().insert(producto3);
 		nuevo.getAlmacen().inOrden();
 		System.out.println("root: " + nuevo.getAlmacen().getRoot());
-		nuevo.getAlmacen().remove(producto2);
-		nuevo.getAlmacen().inOrden();
-		System.out.println("root: " + nuevo.getAlmacen().getRoot());
-		nuevo.getAlmacen().insert(producto3);
-		nuevo.getAlmacen().inOrden();
-		System.out.println("root: " + nuevo.getAlmacen().getRoot());
 		nuevo.getAlmacen().getMin();
 		nuevo.getAlmacen().getMax();
-		
+		nuevo.getAlmacen().remove(producto3);
+		System.out.println("root: " + nuevo.getAlmacen().getRoot());
+		nuevo.getAlmacen().inOrden();
+		nuevo.getAlmacen().insert(producto3);
+		System.out.println("root: " + nuevo.getAlmacen().getRoot());
+		nuevo.getAlmacen().inOrden();
+		nuevo.getAlmacen().remove(producto2);
+		System.out.println("root: " + nuevo.getAlmacen().getRoot());
+		nuevo.getAlmacen().inOrden();
+
+		nuevo.traspasarProductos(nuevo2);
+
+		nuevo.getAlmacen().inOrden();
+		nuevo2.getAlmacen().inOrden();
 		System.out.println("Avl de enteros PRUEBA");
 
 		Avl<Integer> b = new Avl<Integer>();
