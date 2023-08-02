@@ -1,5 +1,3 @@
-package main;
-
 import dijkstra.Dijkstra;
 //import dijkstra.Map;
 import graphlink.GraphLink;
