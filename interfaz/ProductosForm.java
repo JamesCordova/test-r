@@ -178,6 +178,9 @@ public class ProductosForm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+	String cod = jTextField1.getText();
+        String stock=jTextField4.getText();
+        Producto nuevo = new Producto (Integer.parseInt(cod), jTextField3.getText(), Integer.parseInt(stock));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
